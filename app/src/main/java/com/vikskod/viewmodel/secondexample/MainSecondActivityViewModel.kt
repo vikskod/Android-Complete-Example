@@ -7,8 +7,12 @@ import androidx.lifecycle.ViewModel
  * Created by Vikash Parajuli on 27/01/2021.
  * vparajuli819@gmail.com
  */
-class MainSecondActivityViewModel : ViewModel() {
+class MainSecondActivityViewModel(private val startTotal: Int) : ViewModel() {
     private var total: Int = 0
+
+    init {
+        total = startTotal
+    }
 
     fun add(number: Int) {
         total += number
