@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SampleDatabinding">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.vikskod.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.vikskod.databinding.MainDataBindingActivity" />
+
     </application>
 
 </manifest>
