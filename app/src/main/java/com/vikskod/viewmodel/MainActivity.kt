@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.sampledatabinding.R
 import com.example.sampledatabinding.databinding.ActivityViewmodelLifecycleBinding
-import com.vikskod.viewmodel.secondexample.MainSecondActivity
+import com.vikskod.viewmodellivedata.MainActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,9 +24,5 @@ class MainActivity : AppCompatActivity() {
 
     fun onIncreaseClicked(view: View) {
         binding.tvCount.text = "Count: ${viewModel.getIncreaseCount()}"
-    }
-
-    fun onSecondExampleClicked(view: View) {
-        startActivity(Intent(this, MainSecondActivity::class.java))
     }
 }

@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rotate the screen. Rotation doesn't set counter to 0 because of ViewModel scope. Here main class is demonstrating use of ViewModel Factory. Result is 3 because of ViewModel Factory"
+            android:text="Rotate the screen. Rotation doesn't reset value because of ViewModel scope. Here main class is demonstrating use of ViewModel Factory. Result is 3 because of ViewModel Factory. Also used LiveData to Observe the data."
             android:textAlignment="center"
             android:textSize="10sp" />
 

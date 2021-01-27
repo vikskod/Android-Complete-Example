@@ -21,4 +21,8 @@ class MainActivity : AppCompatActivity() {
     fun onViewModelLifeCycleClicked(view: View) {
         startActivity(Intent(this, com.vikskod.viewmodel.MainActivity::class.java))
     }
+
+    fun onViewModelFactoryLiveDataClicked(view: View) {
+        startActivity(Intent(this, com.vikskod.viewmodellivedata.MainActivity::class.java))
+    }
 }

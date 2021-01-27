@@ -17,29 +17,68 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btnBinding"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onDataBindingClicked"
-                android:text="DataBinding"
-                android:textAllCaps="false" />
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btnViewModel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onViewModelLifeCycleClicked"
-                android:text="ViewModel and LifeCycle"
-                android:textAllCaps="false" />
+                <Button
+                    android:id="@+id/btnBinding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onDataBindingClicked"
+                    android:text="DataBinding"
+                    android:textAllCaps="false" />
 
-        </LinearLayout>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnViewModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onViewModelLifeCycleClicked"
+                    android:text="1 &amp; ViewModel and LifeCycle"
+                    android:textAllCaps="false" />
+
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnLiveData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onViewModelFactoryLiveDataClicked"
+                    android:text="2 &amp; ViewModel Factory and LiveData"
+                    android:textAllCaps="false" />
+
+            </TableRow>
+
+        </TableLayout>
 
     </ScrollView>
 
