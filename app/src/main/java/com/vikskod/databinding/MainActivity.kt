@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.sampledatabinding.R
 import com.example.sampledatabinding.databinding.ActivityDatabindingBinding
 
-class MainDataBindingActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     //"ActivityDatabinding + Binding => ActivityDatabindingBinding" this class came from activity_databinding.xml
     lateinit var binding: ActivityDatabindingBinding
