@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onIncreaseClicked(view: View) {
-        binding.tvCount.text = "Count: ${viewModel.getIncreaseCount()}"
+        binding.tvCount.text = "Count: ${viewModel.increaseCount()}"
+    }
+
+    fun onSecondExampleClicked(view: View) {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

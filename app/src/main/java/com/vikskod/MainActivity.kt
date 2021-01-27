@@ -25,4 +25,8 @@ class MainActivity : AppCompatActivity() {
     fun onViewModelFactoryLiveDataClicked(view: View) {
         startActivity(Intent(this, com.vikskod.viewmodellivedata.MainActivity::class.java))
     }
+
+    fun onTwoWayDataBindingClicked(view: View) {
+        startActivity(Intent(this, com.vikskod.twowaydatabinding.MainActivity::class.java))
+    }
 }

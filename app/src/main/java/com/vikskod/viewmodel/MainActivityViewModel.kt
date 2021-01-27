@@ -9,7 +9,7 @@ class MainActivityViewModel : ViewModel() {
         return count
     }
 
-    fun getIncreaseCount(): Int {
+    fun increaseCount(): Int {
         return ++count
     }
 }
