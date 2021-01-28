@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRoomBinding
     private lateinit var viewModel: MainActivityViewModel
 
+    private lateinit var todoAdapter : TodoAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_room)
@@ -43,13 +45,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         binding.rvTodo.layoutManager = LinearLayoutManager(this)
+        todoAdapter = TodoAdapter { item: Todo -> listItemClicked(item) }
+        binding.rvTodo.adapter = todoAdapter
         showTodoList()
     }
 
     private fun showTodoList() {
         viewModel.todos.observe(this, {
             Log.i("MyTag =", it.toString())
-            binding.rvTodo.adapter = TodoAdapter(it) { item: Todo -> listItemClicked(item) }
+            todoAdapter.setList(it)
         })
     }
 
