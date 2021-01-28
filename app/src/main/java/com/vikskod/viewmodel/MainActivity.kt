@@ -12,8 +12,8 @@ import com.vikskod.viewmodellivedata.MainActivity
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityViewmodelLifecycleBinding
-    lateinit var viewModel: MainActivityViewModel
+    private lateinit var binding: ActivityViewmodelLifecycleBinding
+    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
     }
 
     fun onDataBindingClicked(view: View) {
@@ -32,5 +31,9 @@ class MainActivity : AppCompatActivity() {
 
     fun onNavigationComponentClicked(view: View) {
         startActivity(Intent(this, com.vikskod.navigationcomponent.MainActivity::class.java))
+    }
+
+    fun onCoroutinesVMSClicked(view: View) {
+        startActivity(Intent(this, com.vikskod.coroutinesviewmodelscope.MainActivity::class.java))
     }
 }
