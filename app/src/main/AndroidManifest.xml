@@ -21,6 +21,7 @@
         <activity android:name="com.vikskod.viewmodel.MainActivity" />
         <activity android:name="com.vikskod.viewmodellivedata.MainActivity" />
         <activity android:name="com.vikskod.twowaydatabinding.MainActivity" />
+        <activity android:name="com.vikskod.navigationcomponent.MainActivity" />
 
     </application>
 

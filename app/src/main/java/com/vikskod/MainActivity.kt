@@ -29,4 +29,8 @@ class MainActivity : AppCompatActivity() {
     fun onTwoWayDataBindingClicked(view: View) {
         startActivity(Intent(this, com.vikskod.twowaydatabinding.MainActivity::class.java))
     }
+
+    fun onNavigationComponentClicked(view: View) {
+        startActivity(Intent(this, com.vikskod.navigationcomponent.MainActivity::class.java))
+    }
 }
