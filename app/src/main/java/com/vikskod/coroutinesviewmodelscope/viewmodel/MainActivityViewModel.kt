@@ -1,14 +1,9 @@
 package com.vikskod.coroutinesviewmodelscope.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.vikskod.coroutinesviewmodelscope.model.User
+import androidx.lifecycle.liveData
 import com.vikskod.coroutinesviewmodelscope.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 /**
@@ -18,6 +13,18 @@ import kotlinx.coroutines.withContext
 class MainActivityViewModel : ViewModel() {
 
     private var userRepository = UserRepository()
+
+    /*
+    * using LiveData to emit the data
+    * */
+    var users = liveData(Dispatchers.IO) {
+        val result = userRepository.getUsers()
+        emit(result)
+    }
+
+    /*
+
+    These below code is replaced by LiveData Builder
 
     private var usersData = MutableLiveData<List<User>>()
     val users: LiveData<List<User>> get() = usersData
@@ -30,5 +37,5 @@ class MainActivityViewModel : ViewModel() {
             }
             usersData.value = result
         }
-    }
+    }*/
 }

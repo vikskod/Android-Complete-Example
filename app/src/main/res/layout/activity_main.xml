@@ -15,127 +15,155 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="horizontal|vertical">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <HorizontalScrollView
+            android:id="@+id/horizontalView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal|vertical">
 
-            <TableRow>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="1"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onDataBindingClicked"
-                    android:text="DataBinding"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="onDataBindingClicked"
+                        android:text="DataBinding"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/selector" />
 
-            <TableRow>
+                </TableRow>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="2"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onViewModelLifeCycleClicked"
-                    android:text="1 &amp; ViewModel and LifeCycle"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="2"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="onViewModelLifeCycleClicked"
+                        android:text="1 &amp; ViewModel and LifeCycle"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/selector" />
 
-            <TableRow>
+                </TableRow>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="3"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onViewModelFactoryLiveDataClicked"
-                    android:text="2 &amp; ViewModel Factory and LiveData"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="onViewModelFactoryLiveDataClicked"
+                        android:text="2 &amp; ViewModel Factory and LiveData"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/selector" />
 
-            <TableRow>
+                </TableRow>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="4"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onTwoWayDataBindingClicked"
-                    android:text="2 &amp; Two Way DataBinding"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="4"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="onTwoWayDataBindingClicked"
+                        android:text="2 &amp; Two Way DataBinding"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/selector" />
 
-            <TableRow>
+                </TableRow>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="5"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onNavigationComponentClicked"
-                    android:text="Navigation Architecture Component"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="onNavigationComponentClicked"
+                        android:text="Navigation Architecture Component"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/selector" />
 
-            <TableRow>
+                </TableRow>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="6"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onCoroutinesVMSClicked"
-                    android:text="Coroutines &amp; ViewModel Scope (MVVM)"
-                    android:textAllCaps="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="6"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            </TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="onCoroutinesVMSClicked"
+                        android:text="Coroutines, ViewModel Scope &amp; LiveData (MVVM)"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/selector" />
 
-        </TableLayout>
+                </TableRow>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
 
     </ScrollView>
 

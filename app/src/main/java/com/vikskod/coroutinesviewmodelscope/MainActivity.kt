@@ -24,7 +24,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_coroutine_viewmodelscope)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        viewModel.getUserData()
+        /*
+        * This code is removed. See MainActivityViewModel class for more detail
+        * */
+        //viewModel.getUserData()
 
         viewModel.users.observe(this, { myUsers ->
             var result = ""
