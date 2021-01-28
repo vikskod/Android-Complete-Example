@@ -26,46 +26,83 @@ class MainActivityViewModel(private val repository: TodoRepository) : ViewModel(
     val saveOrUpdateBtnText = MutableLiveData<String>()
     val deleteOrDeleteAllBtnText = MutableLiveData<String>()
 
+    private var isUpdateOrDelete = false
+    private lateinit var todoToUpdateOrDelete: Todo
+
     init {
         saveOrUpdateBtnText.value = "Save"
         deleteOrDeleteAllBtnText.value = "Delete All"
     }
 
     fun saveOrUpdate() {
-        val title = inputTitle.value!!
-        val description = inputDescription.value!!
+        if (isUpdateOrDelete) {
+            todoToUpdateOrDelete.title = inputTitle.value!!
+            todoToUpdateOrDelete.description = inputDescription.value!!
+            updateTodo(todoToUpdateOrDelete)
+        } else {
+            val title = inputTitle.value!!
+            val description = inputDescription.value!!
 
-        insertTodo(Todo(0, title, description))
-        inputTitle.value = null
-        inputDescription.value = null
+            insertTodo(Todo(0, title, description))
+            inputTitle.value = null
+            inputDescription.value = null
+        }
     }
 
     fun deleteOrDeleteAll() {
-        deleteAll()
+        if (isUpdateOrDelete)
+            deleteTodo(todoToUpdateOrDelete)
+        else
+            deleteAll()
     }
 
-    fun insertTodo(todo: Todo) {
+    private fun insertTodo(todo: Todo) {
         viewModelScope.launch {
             repository.insert(todo)
         }
     }
 
-    fun updateTodo(todo: Todo) {
+    private fun updateTodo(todo: Todo) {
         viewModelScope.launch {
             repository.update(todo)
         }
+
+        inputTitle.value = null
+        inputDescription.value = null
+        isUpdateOrDelete = false
+
+        saveOrUpdateBtnText.value = "Save"
+        deleteOrDeleteAllBtnText.value = "Delete All"
     }
 
-    fun deleteTodo(todo: Todo) {
+    private fun deleteTodo(todo: Todo) {
         viewModelScope.launch {
             repository.delete(todo)
         }
+
+        inputTitle.value = null
+        inputDescription.value = null
+        isUpdateOrDelete = false
+
+        saveOrUpdateBtnText.value = "Save"
+        deleteOrDeleteAllBtnText.value = "Delete All"
     }
 
-    fun deleteAll() {
+    private fun deleteAll() {
         viewModelScope.launch {
             repository.deleteAll()
         }
+    }
+
+    fun initUpdateAndDelete(todo: Todo) {
+        inputTitle.value = todo.title
+        inputDescription.value = todo.description
+
+        isUpdateOrDelete = true
+        todoToUpdateOrDelete = todo
+
+        saveOrUpdateBtnText.value = "Update"
+        deleteOrDeleteAllBtnText.value = "Delete"
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {

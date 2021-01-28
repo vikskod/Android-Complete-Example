@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sampledatabinding.R
 import com.example.sampledatabinding.databinding.ActivityRoomBinding
+import com.vikskod.roomandall.db.Todo
 import com.vikskod.roomandall.db.TodoDao
 import com.vikskod.roomandall.db.TodoDatabase
 import com.vikskod.roomandall.repository.TodoRepository
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         binding.rvTodo.layoutManager = LinearLayoutManager(this)
         showTodoList()
     }
@@ -48,7 +49,11 @@ class MainActivity : AppCompatActivity() {
     private fun showTodoList() {
         viewModel.todos.observe(this, {
             Log.i("MyTag =", it.toString())
-            binding.rvTodo.adapter = TodoAdapter(it)
+            binding.rvTodo.adapter = TodoAdapter(it) { item: Todo -> listItemClicked(item) }
         })
+    }
+
+    private fun listItemClicked(todo: Todo) {
+        viewModel.initUpdateAndDelete(todo)
     }
 }

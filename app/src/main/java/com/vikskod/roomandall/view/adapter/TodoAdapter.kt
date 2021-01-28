@@ -13,7 +13,8 @@ import com.vikskod.roomandall.db.Todo
  * Created by Vikash Parajuli on 28/01/2021.
  * vparajuli819@gmail.com
  */
-class TodoAdapter(private var todos: List<Todo>) : RecyclerView.Adapter<MyViewHolder>() {
+class TodoAdapter(private var todos: List<Todo>, private val clickListener: (Todo) -> Unit) :
+    RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: RvRoomItemBinding =
@@ -22,7 +23,7 @@ class TodoAdapter(private var todos: List<Todo>) : RecyclerView.Adapter<MyViewHo
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(todos[position])
+        holder.bind(todos[position], clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -32,8 +33,12 @@ class TodoAdapter(private var todos: List<Todo>) : RecyclerView.Adapter<MyViewHo
 
 class MyViewHolder(val binding: RvRoomItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(todo: Todo) {
+    fun bind(todo: Todo, clickListener: (Todo) -> Unit) {
         binding.tvTitle.text = todo.title
         binding.tvDescription.text = todo.description
+
+        binding.cvContainer.setOnClickListener {
+            clickListener(todo)
+        }
     }
 }
