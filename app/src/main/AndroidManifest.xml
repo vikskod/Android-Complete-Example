@@ -23,6 +23,7 @@
         <activity android:name="com.vikskod.twowaydatabinding.MainActivity" />
         <activity android:name="com.vikskod.navigationcomponent.MainActivity" />
         <activity android:name="com.vikskod.coroutinesviewmodelscope.MainActivity" />
+        <activity android:name="com.vikskod.roomandall.MainActivity" />
 
     </application>
 

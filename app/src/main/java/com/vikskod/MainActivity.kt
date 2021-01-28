@@ -36,4 +36,8 @@ class MainActivity : AppCompatActivity() {
     fun onCoroutinesVMSClicked(view: View) {
         startActivity(Intent(this, com.vikskod.coroutinesviewmodelscope.MainActivity::class.java))
     }
+
+    fun onRoomClicked(view: View) {
+        startActivity(Intent(this, com.vikskod.roomandall.MainActivity::class.java))
+    }
 }
