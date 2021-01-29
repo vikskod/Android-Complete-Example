@@ -1,12 +1,11 @@
 package com.vikskod.retrofitexaxmple.network
 
-import com.google.gson.GsonBuilder
+import com.vikskod.retrofitexaxmple.utils.Util.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
 
 /**
  * Created by Vikash Parajuli on 29/01/2021.
@@ -15,25 +14,24 @@ import java.util.concurrent.TimeUnit
 class RetrofitInstance {
 
     companion object {
-        val BASE_URL = "https://newsapi.org"
-
-        val interceptor = HttpLoggingInterceptor().apply {
-            this.level = HttpLoggingInterceptor.Level.BODY
-        }
-
-        val client = OkHttpClient.Builder().apply {
-            this.addInterceptor(interceptor)
+        private val retrofitNews by lazy {
+            val logging = HttpLoggingInterceptor()
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder()
+                .addInterceptor(logging)
                 .connectTimeout(20, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
-        }.build()
-
-        fun getRetrofitInstance(): Retrofit {
-            return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build()
+            Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+        }
+
+        val newsApi by lazy {
+            retrofitNews.create(ApiService::class.java)
         }
     }
 }

@@ -1,15 +1,19 @@
 package com.vikskod.retrofitexaxmple
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sampledatabinding.R
-import com.vikskod.retrofitexaxmple.model.News
-import com.vikskod.retrofitexaxmple.network.NewsService
-import com.vikskod.retrofitexaxmple.network.RetrofitInstance
-import retrofit2.Response
+import com.example.sampledatabinding.databinding.ActivityRetrofitBinding
+import com.vikskod.retrofitexaxmple.repository.NewsRepository
+import com.vikskod.retrofitexaxmple.ui.adapter.MyAdapter
+import com.vikskod.retrofitexaxmple.utils.Resource
+import com.vikskod.retrofitexaxmple.viewmodel.MainActivityViewModel
+import com.vikskod.retrofitexaxmple.viewmodel.ViewModelFactory
 
 
 /**
@@ -18,18 +22,54 @@ import retrofit2.Response
  */
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRetrofitBinding
+    private lateinit var viewModel: MainActivityViewModel
+
+    private lateinit var adapter: MyAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_retrofit)
 
-        val retrofitService = RetrofitInstance.getRetrofitInstance().create(NewsService::class.java)
-        val responseLiveData: LiveData<Response<News>> = liveData {
-            val response = retrofitService.getNews("8344b549554d443c964d5617a285debb", "au")
-            emit(response)
-        }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_retrofit)
 
-        responseLiveData.observe(this, {
-            Log.i("Response ===", it.body().toString())
+        val factory = ViewModelFactory(application, NewsRepository())
+        viewModel = ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
+
+        initRecyclerView()
+        getNews()
+    }
+
+    private fun initRecyclerView() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = MyAdapter()
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun getNews() {
+        viewModel.newsData.observe(this, {
+            when (it) {
+                is Resource.Loading -> showProgressBar()
+                is Resource.Success ->{
+                    hideProgressBar()
+                    it.data?.let {
+                        adapter.setList(it)
+                    }
+                }
+                is Resource.Error -> {
+                    hideProgressBar()
+                    it.message?.let {
+                        Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         })
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
+    }
+
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
     }
 }

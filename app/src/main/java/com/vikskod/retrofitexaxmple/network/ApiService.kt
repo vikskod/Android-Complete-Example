@@ -11,9 +11,9 @@ import retrofit2.http.Query
  * Created by Vikash Parajuli on 29/01/2021.
  * vparajuli819@gmail.com
  */
-interface NewsService {
+interface ApiService {
 
-    @GET("/v2/top-headlines")
+    @GET("top-headlines")
     suspend fun getNews(
         @Header("Authorization") auth: String,
         @Query("country") country: String
