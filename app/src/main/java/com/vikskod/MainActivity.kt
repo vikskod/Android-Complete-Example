@@ -40,4 +40,8 @@ class MainActivity : AppCompatActivity() {
     fun onRoomClicked(view: View) {
         startActivity(Intent(this, com.vikskod.roomandall.MainActivity::class.java))
     }
+
+    fun onRetrofitClicked(view: View) {
+        startActivity(Intent(this, com.vikskod.retrofitexaxmple.MainActivity::class.java))
+    }
 }
